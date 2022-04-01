@@ -58,7 +58,7 @@ params['fix_color'] = [int(n) for n in params['fix_color']]
 
 # Pull some vars from the dict now so we won't have to do spend time doing that during sweep
 color = params['background_color']
-text_color = params['text_color'] 
+text_color = params['text_color']
 fix_color = params['fix_color']
 pulse_cue = params['pulse_cue']
 tr = params['tr']
@@ -73,6 +73,8 @@ save_log = params['save_log']
 stair_lower = params['stair_lower']
 stair_upper = params['stair_upper']
 targ_rate = params['targ_rate']
+response_key = params['response_key']
+bore_mask = params['bore_mask']
 
 # Check that specified parameters make sense
 if params['response_period'] > params['targ_cooldown']:
@@ -436,7 +438,7 @@ def sweep(direct, refresh_rate, trial, targ=targ, targ_rate=targ_rate, sweep_rat
                     feedback_frames_rem = feedback_frames
                     correct += 1
                     targ_here = False
-                else: 
+                else:
                     false_pos += 1
 
             # Refresh images on proper frame
@@ -553,7 +555,7 @@ def sweep(direct, refresh_rate, trial, targ=targ, targ_rate=targ_rate, sweep_rat
             fix_cross.draw()
             fix_dot.draw()
             win.flip()
-                            
+
             # Alternate between sets a and b; Save stimuli info to log
             if (frame + 1) % refresh_rate == 0:
                 string_rt = str(this_rt)[1:-2]
